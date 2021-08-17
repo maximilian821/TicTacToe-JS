@@ -1,15 +1,16 @@
-let board = document.getElementById('board');
-let title = document.getElementById('title');
-let cell = document.getElementsByClassName('cell');
-let resetButton = document.getElementById('reset');
-let xStat = document.getElementById('x');
-let oStat = document.getElementById('o');
-let drawStat = document.getElementById('draw')
+const board = document.getElementById('board');
+const title = document.getElementById('title');
+const cell = document.getElementsByClassName('cell');
+const resetButton = document.getElementById('reset');
+const xStat = document.getElementById('x');
+const oStat = document.getElementById('o');
+const drawStat = document.getElementById('draw');
+const clearStatsButton = document.getElementById('clear-stats')
 
 title.innerHTML = 'TicTacToe'
 
-let player = 'x';
-let computer = 'o';
+const player = 'x';
+const computer = 'o';
 const winCombinations = [
   [0, 1, 2],
   [3, 4, 5],
@@ -34,6 +35,13 @@ resetButton.addEventListener('click', () => {
   for (const e of cell) {
     e.innerHTML = ''
   }
+})
+
+clearStatsButton.addEventListener('click', () => {
+  localStorage.clear();
+  xStat.innerHTML = 0;
+  oStat.innerHTML = 0;
+  drawStat.innerHTML = 0;
 })
 
 !localStorage.getItem('X') ? xStat.innerHTML = 0 : xStat.innerHTML = localStorage.getItem('X');
